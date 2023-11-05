@@ -15,7 +15,7 @@ namespace ConsoleApp2
         public static void Login()
         {
             Console.WriteLine("****INICIO DE SESION****");
-            Workbook base_excel = new Workbook("C:\\Users\\Alexis\\Desktop\\Proyectos y practicas\\Basededatos.xlsx");
+            Workbook base_excel = new Workbook("Basededatos.xlsx");
             Worksheet hoja = base_excel.Worksheets[0];
             Regex regex = new(@"\d");
             string? na = "", ap = "";
@@ -119,7 +119,7 @@ namespace ConsoleApp2
                 catch (Exception) { }
             } while (true);
             Console.Write("\nRegistrando. . .");
-            Workbook base_excel = new Workbook("C:\\Users\\Alexis\\Desktop\\Proyectos y practicas\\Basededatos.xlsx");
+            Workbook base_excel = new Workbook("Basededatos.xlsx");
             Worksheet hoja = base_excel.Worksheets[0];
             for (int fila = 2; fila <= 100; fila++)
             {
@@ -144,7 +144,7 @@ namespace ConsoleApp2
                     celda_nombre.PutValue($"{nombre} {apellidos}");
                     celda_DNI.PutValue($"{DNI}");
                     celda_saldo.PutValue($"{saldo}");
-                    base_excel.Save("C:\\Users\\Alexis\\Desktop\\Proyectos y practicas\\Basededatos.xlsx");
+                    base_excel.Save("Basededatos.xlsx");
                     Console.Clear();
                     Console.WriteLine($"BIENVENIDO {nombre} {apellidos}!\nDNI: {DNI}\n");
                     Console.Write($"Empiezas con un saldo de: {saldo:C}");

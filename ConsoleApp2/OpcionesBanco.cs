@@ -101,7 +101,7 @@ namespace ConsoleApp2
                         }
                         else
                         {
-                            Workbook base_excel = new Workbook("C:\\Users\\Alexis\\Desktop\\Proyectos y practicas\\Basededatos.xlsx");
+                            Workbook base_excel = new Workbook("Basededatos.xlsx");
                             Worksheet hoja = base_excel.Worksheets[0];
                             for (int n = 2; n <= 100; n++)
                             {
@@ -114,7 +114,7 @@ namespace ConsoleApp2
                                     break;
                                 }
                             }
-                            base_excel.Save("C:\\Users\\Alexis\\Desktop\\Proyectos y practicas\\Basededatos.xlsx");
+                            base_excel.Save("Basededatos.xlsx");
                             OpcionesCliente.nombre = "";
                             OpcionesCliente.apellidos = "";
                             OpcionesCliente.DNI = 0;
