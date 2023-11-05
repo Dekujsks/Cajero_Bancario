@@ -86,6 +86,19 @@ namespace ConsoleApp2
         //-------------------------------------------------------------------------------------------------------------
         public static void Salir()
         {
+            Workbook base_excel = new Workbook("Basededatos.xlsx");
+            Worksheet hoja = base_excel.Worksheets[0];
+            for (int n = 2; n <= 100; n++)
+            {
+                Cell nombre = hoja.Cells[$"C{n}"];
+                Cell dni = hoja.Cells[$"D{n}"];
+                if (nombre.StringValue == $"{OpcionesCliente.nombre} {OpcionesCliente.apellidos}" || dni.StringValue == $"{OpcionesCliente.DNI}")
+                {
+                    Cell celda_saldo = hoja.Cells[$"E{n}"];
+                    celda_saldo.PutValue(OpcionesCliente.saldo);
+                    break;
+                }
+            }
             Console.WriteLine("****SALIDA****");
             Console.Write("¿Quiere cerrar sesion o quiere cerrar la caja? (s: sesion/c: caja): ");
             char resp;
@@ -101,19 +114,6 @@ namespace ConsoleApp2
                         }
                         else
                         {
-                            Workbook base_excel = new Workbook("Basededatos.xlsx");
-                            Worksheet hoja = base_excel.Worksheets[0];
-                            for (int n = 2; n <= 100; n++)
-                            {
-                                Cell nombre = hoja.Cells[$"C{n}"];
-                                Cell dni = hoja.Cells[$"D{n}"];
-                                if (nombre.StringValue == $"{OpcionesCliente.nombre} {OpcionesCliente.apellidos}" || dni.StringValue == $"{OpcionesCliente.DNI}")
-                                {
-                                    Cell celda_saldo = hoja.Cells[$"E{n}"];
-                                    celda_saldo.PutValue(OpcionesCliente.saldo);
-                                    break;
-                                }
-                            }
                             base_excel.Save("Basededatos.xlsx");
                             OpcionesCliente.nombre = "";
                             OpcionesCliente.apellidos = "";
@@ -127,6 +127,7 @@ namespace ConsoleApp2
                         }
                         else 
                             Console.WriteLine($"Nos vemos {OpcionesCliente.nombre}, tenga buen día.");
+                        base_excel.Save("Basededatos.xlsx");
                         Environment.Exit(0);
                         break;
                 }
