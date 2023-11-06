@@ -99,6 +99,7 @@ namespace ConsoleApp2
                     break;
                 }
             }
+            base_excel.Save("Basededatos.xlsx");
             Console.WriteLine("****SALIDA****");
             Console.Write("¿Quiere cerrar sesion o quiere cerrar la caja? (s: sesion/c: caja): ");
             char resp;
@@ -114,7 +115,6 @@ namespace ConsoleApp2
                         }
                         else
                         {
-                            base_excel.Save("Basededatos.xlsx");
                             OpcionesCliente.nombre = "";
                             OpcionesCliente.apellidos = "";
                             OpcionesCliente.DNI = 0;
@@ -127,7 +127,6 @@ namespace ConsoleApp2
                         }
                         else 
                             Console.WriteLine($"Nos vemos {OpcionesCliente.nombre}, tenga buen día.");
-                        base_excel.Save("Basededatos.xlsx");
                         Environment.Exit(0);
                         break;
                 }
