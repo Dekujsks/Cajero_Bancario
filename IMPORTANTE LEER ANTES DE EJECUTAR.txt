@@ -1,12 +1,16 @@
 Hola curioso usuario o Cega :D
 Gracias porque te estes tomando el tiempo de ver mi proyecto y juzgarlo con tu criterio, sin mas dilacion empezare a darte una guia de que hacer para que todo funcione correctamente:
 
-Para este proyecto utilice una libreria externa llamada "Aspose Cells" para obtener acceso a un archivo local de excel y poder modificarlo (le invito a investigar las propiedades que utilice para entenderlo mejor :D), teniendo en cuenta esto necesitaremos acceder al archivo "Basededatos"
-que esta dentro de la carpeta del proyecto utilizando como guia su ruta local dentro del Visual Studio(Ejemplo: Si la carpeta del proyecto se encuentra en el escritorio debemos cambiar la ruta 
-"C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx")
+Definicion: La funcionalidad y el proposito de este proyecto se basa en simular un cajero bancario (claramente no estan todas las propiedades y caracteristicas que posee una, pero si las mas fundamentales) esto se realizo con el 
+proposito de guiar a los jovenes menores que aun estan por cumplir la mayoria de edad y puedan proyectarse una idea hacia su vida financiera.
+
+Para este proyecto utilice una libreria externa llamada "Aspose Cells" para obtener acceso a un archivo local de excel y poder modificarlo (le invito a investigar las propiedades que utilice para entenderlo mejor :D), teniendo en 
+cuenta esto necesitaremos acceder al archivo "Basededatos" que esta dentro de la carpeta del proyecto utilizando como guia su ruta local dentro del Visual Studio(Ejemplo: Si la carpeta del proyecto se encuentra en el escritorio debemos
+cambiar la ruta "C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx")
 
 Paso 1: Abre Visual Studio y en el Explorador de soluciones debes encontrar "OpcionesBanco.cs" y "OpcionesCliente.cs", abrelas para cambiar la ruta (no es necesario abrir "Program.cs")
-Paso 2 (OpcionesCliente.cs): A continuacion deberas cambiar el ejemplo de "C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx" por la ruta en la que se encuentra el archivo .xlsx (Es importante que pongas .xlsx para reconozca el archivo)
+Paso 2 (OpcionesCliente.cs): A continuacion deberas cambiar el ejemplo de "C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx" por la ruta en la que se encuentra el archivo .xlsx (Es importante que pongas .xlsx
+para reconozca el archivo)
  
 -Ln 23: Workbook base_excel = new Workbook("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
 -Ln 211: Workbook base_excel = new Workbook("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
