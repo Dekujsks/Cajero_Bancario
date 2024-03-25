@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Aspose.Cells;
+using Cajero_Bancario;
 using DocumentFormat.OpenXml.Drawing;
 using SpreadsheetLight;
 namespace ConsoleApp2
 {
-    internal class OpcionesCliente
+    internal class OpcionesCliente : Program
     {
         public static double saldo = 0;
         public static double saldoAnterior = 0;
@@ -19,7 +20,7 @@ namespace ConsoleApp2
         public static void Login()
         {
             Console.WriteLine("《 Inicio de sesión 》");
-            Workbook base_excel = new Workbook("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
+            Workbook base_excel = new Workbook("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
             Worksheet hoja = base_excel.Worksheets[0];
             Regex regex = new(@"\d");
             string? na = "", ap = "";
@@ -134,6 +135,14 @@ namespace ConsoleApp2
                         Console.WriteLine("Datos incorrectos, porfavor intentelo de nuevo");
                 } while (DNI == 0 || clave == 0);
                 Console.Clear();
+                Console.WriteLine("Iniciando sesión. . .");
+                for (int l = 0; l <= 10; l++)
+                {
+                    string barraCarga = GetBarraCarga(l, 10);
+                    Console.Write($"\r[{barraCarga}] {l * 10}%");
+                    Thread.Sleep(350);
+                }
+                Console.WriteLine();
                 Console.WriteLine("Inicio de sesion completada!");
                 Console.ReadKey();
             }
@@ -188,41 +197,57 @@ namespace ConsoleApp2
                 else
                     Console.WriteLine("Usted debe ingresar una clave de 6 digitos, intentelo de nuevo.");
             } while (true);
-            Console.WriteLine();
-            Console.Write("\nRegistrando. . .");
-            Workbook base_excel = new Workbook("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
-            Worksheet hoja = base_excel.Worksheets[0];
-            for (int fila = 2; fila <= 100; fila++)
+            if (nombre != "" || apellidos != "")
             {
-                Cell celda_cliente = hoja.Cells[$"B{fila}"];
-                Cell celda_nombre = hoja.Cells[$"C{fila}"];
-                Cell celda_DNI = hoja.Cells[$"D{fila}"];
-                Cell celda_clave = hoja.Cells[$"E{fila}"];
-                Cell celda_saldo = hoja.Cells[$"F{fila}"];
-                if (celda_nombre.StringValue.Equals($"{nombre} {apellidos}") || celda_DNI.StringValue.Equals($"{DNI}"))
+                Console.WriteLine();
+                Console.Write("Registrando. . .\n");
+                for (int rg = 0; rg <= 10; rg++)
                 {
-                    Console.Write("\nUsted ya esta registrado, pruebe a iniciar sesion.");
-                    nombre = ""; apellidos = ""; DNI = 0; saldo = 0; clave = 0;
-                    Console.ReadKey();
-                    break;
+                    string barraCarga = GetBarraCarga(rg, 10);
+                    Console.Write($"\r[{barraCarga}] {rg * 10}%");
+                    Thread.Sleep(600);
                 }
-                if (string.IsNullOrEmpty(celda_cliente.StringValue))
+                Console.WriteLine();
+                Workbook base_excel = new Workbook("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
+                Worksheet hoja = base_excel.Worksheets[0];
+                for (int fila = 2; fila <= 100; fila++)
                 {
-                    saldo = 1000;
-                    saldoAnterior = saldo;
-                    celda_cliente.PutValue($"{fila - 1}.");
-                    celda_nombre.PutValue($"{nombre} {apellidos}");
-                    celda_DNI.PutValue($"{DNI}");
-                    celda_clave.PutValue(clave);
-                    celda_saldo.PutValue(saldo);
-                    base_excel.Save("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
-                    base_excel.Worksheets.RemoveAt(1);
-                    Console.Clear();
-                    Console.WriteLine($"BIENVENIDO {nombre} {apellidos}!\nDNI: {DNI}\n");
-                    Console.Write($"Empiezas con un saldo de: {saldo:C}");
-                    Console.ReadKey();
-                    break;
-                }
+                    Cell celda_cliente = hoja.Cells[$"B{fila}"];
+                    Cell celda_nombre = hoja.Cells[$"C{fila}"];
+                    Cell celda_DNI = hoja.Cells[$"D{fila}"];
+                    Cell celda_clave = hoja.Cells[$"E{fila}"];
+                    Cell celda_saldo = hoja.Cells[$"F{fila}"];
+                    if (celda_nombre.StringValue.Equals($"{nombre} {apellidos}") || celda_DNI.StringValue.Equals($"{DNI}"))
+                    {
+                        Console.Write("\nUsted ya esta registrado, pruebe a iniciar sesion.");
+                        nombre = ""; apellidos = ""; DNI = 0; saldo = 0; clave = 0;
+                        Console.ReadKey();
+                        break;
+                    }
+                    if (string.IsNullOrEmpty(celda_cliente.StringValue))
+                    {
+                        saldo = 1000;
+                        saldoAnterior = saldo;
+                        celda_cliente.PutValue($"{fila - 1}.");
+                        celda_nombre.PutValue($"{nombre} {apellidos}");
+                        celda_DNI.PutValue($"{DNI}");
+                        celda_clave.PutValue(clave);
+                        celda_saldo.PutValue(saldo);
+                        base_excel.Save("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
+                        base_excel.Worksheets.RemoveAt(1);
+                        Console.Clear();
+                        Console.WriteLine($"BIENVENIDO {nombre} {apellidos}!\nDNI: {DNI}\n");
+                        Console.Write($"Empiezas con un saldo de: {saldo:C}");
+                        Console.ReadKey();
+                        break;
+                    }
+                } 
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nDebes tener un nombre y apellido para identificarte\nSeras devuelto al menu. . .");
+                Console.ReadKey();
             }
         }
         //-------------------------------------------------------------------------------------------------------------
@@ -247,6 +272,9 @@ namespace ConsoleApp2
                 {
                     Console.WriteLine($"BIENVENIDO {nombre} {apellidos}!\n");
                     Console.WriteLine($"Su saldo actual: {saldo:C}\n");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("No olvide darle a la opcion de (Salir) para guardar cambios");
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("╔═════════════════════════╗");
                     Console.WriteLine("║                         ║");
                     Console.WriteLine("║ ► 1. Realizar Depósito  ║");
@@ -264,42 +292,56 @@ namespace ConsoleApp2
                 Console.WriteLine("║                         ║");
                 Console.WriteLine("╚═════════════════════════╝");
                 Console.Write("\nSeleccione una opción: ");
-                int opcion = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine();
-                Console.Clear();
-                switch (opcion)
+                try
                 {
-                    case 1:
-                        if (nombre == "")
-                            Login();
-                        else
-                            OpcionesBanco.RealizarDeposito();
-                        break;
-                    case 2:
-                        if (nombre == "")
-                            Registrarse();
-                        else
-                            OpcionesBanco.RetirarDinero();
-                        break;
-                    case 3:
-                        if (nombre == "")
-                            OpcionesBanco.Salir();
-                        else
-                            OpcionesBanco.Prestamos();
-                        break;
-                    case 4:
+                    int opcion = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.Clear();
+                    switch (opcion)
+                    {
+                        case 1:
+                            if (nombre == "")
+                                Login();
+                            else
+                                OpcionesBanco.RealizarDeposito();
+                            break;
+                        case 2:
+                            if (nombre == "")
+                                Registrarse();
+                            else
+                                OpcionesBanco.RetirarDinero();
+                            break;
+                        case 3:
+                            if (nombre == "")
+                                OpcionesBanco.Salir();
+                            else
+                                OpcionesBanco.Prestamos();
+                            break;
+                        case 4:
                             OpcionesBanco.Boucher();
-                        break;
-                    case 5:
-                        OpcionesBanco.Transferencia();
-                        break;
-                    case 6:
-                        OpcionesBanco.Salir();
-                        break;
-                    default:
-                        Console.Write("Opción no válida. Por favor, seleccione una opción válida.");
-                        Console.ReadKey();
-                        break;
+                            break;
+                        case 5:
+                            OpcionesBanco.Transferencia();
+                            break;
+                        case 6:
+                            OpcionesBanco.Salir();
+                            break;
+                        default:
+                            Console.Write("Opción no válida. Por favor, seleccione una opción válida.");
+                            Console.ReadKey();
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nALGO SALIO MAL!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Posibles soluciones:");
+                    Console.WriteLine("1) Escribio un dato incorrecto en un lugar que no debia");
+                    Console.WriteLine("2) Usted no ha escrito bien la ruta del archivo (Basededatos.xlsx) en una de las lineas especificadas");
+                    Console.WriteLine("Asegurese de mantener todo en orden y vuelva a intentarlo, disculpe las molestias");
+                    Console.ReadKey();
                 }
             } while (true);
         }

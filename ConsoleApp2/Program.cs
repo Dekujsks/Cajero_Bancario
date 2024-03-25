@@ -9,47 +9,38 @@ namespace Cajero_Bancario
     {
         static void Main()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(" BIENVENIDO AL CAJERO BANCARIO!!!*\n\n OOOOOOOOOOOOOOOOOOOOkOOOOOOOOOOOOOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOOkd:,,,;oOOx:,,,;lkOOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOxc.     cOOo.     ;dkOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOko'       cOOo.      .cxOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOo,.        cOOo.        'lkOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOkd,.          cOOo.          'lxOOOOOOOO");
-            Console.WriteLine(" OOOOOxl,.            cOOo.            .cxOOOOOO");
-            Console.WriteLine(" OOOd:.               cOOo.              .;okOOO");
-            Console.WriteLine(" OOx,        ',.      cOOo.      ,,.       .oOOO");
-            Console.WriteLine(" OOx'     .,lkd.      cOOo.      ckd:.     .oOOO");
-            Console.WriteLine(" OOx'   ':dkOOd.      cOOo.      cOOOxl,.  .oOkO");
-            Console.WriteLine(" OOx;':okOOOOOd.      cOOo.      cOOkOOkdc,'oOOO");
-            Console.WriteLine(" OOkkkOOOOOOOOd.      cOOo.      cOOOkOOOOkxkOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.      cOOo.      cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOd.     .cOOo.     .cOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOklccccccdOOxlccccccxOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOkxooxkdodkkdooooddkOkxooxOkdoxkOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOx, .:d' .lo.     ..lx, .;kl. ,xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOk,  ;d.  co.  ,c'  'o,   cl. 'xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOx,  ;d.  co. .o0c  .o,   .,. 'xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOx,  ;d.  co.  ';.  ,d,       'xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOx,  ;d.  co.  ....;dx' .,.   'xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOk;  .,. .lo. .ckkkOOx' .lc.  'xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOo'.   .;xo. .oOOOOOx, .lk;. ,xOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOxollldkOkdodkOOOOOkdooxOxdodkOOOOOOOO");
-            Console.WriteLine(" OOOOOOOOOOOOOOOOOOOOOOOOOOOOkOOkkOOOOOOOOOOOOOO");
+            Console.WriteLine(" BIENVENIDO AL CAJERO BANCARIO!!!*\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@"
+        MMMMMMMMMMMMWXK0Okkkkkdd0NWWMMMMMMMMMMMM
+        MMMMMMMMWN0kdloOOkkkkxo;:ldxx0NWMMMMMMMM
+        MMMMMMWKkocclcd0kdddddl;;ccc,':dKWMMMMMM
+        MMMMWXxlcccllcokxdddddl::cccc,..,dKWMMMM
+        MMMW0occcclcccccccccccccccccc:'...:OWMMM
+        MMWOlccccccccclddddddoc:cccccc,....,kWMM
+        MW0lclclccccccxKOkkkkdc;:lcccc;.....;0MM
+        MXdclcclccccclOKkkkkkd:;:ccclc;......oNM
+        M0lcccccllccclk0xddddo:;:ccccc;......;0M
+        Wkcclcccccccccoddooool::ccccc:,......,OM
+        Nxcccc:lk0KOxlcccccccccldOKKOxc'.....,kM
+        Xdcc:;dNMMMMWXklcccccco0WMMMMMNO:.....lK
+        x::c,oNMMMMMMMW0occloxXMMMMMMMMM0:....,l
+        l:c;'oNMMMMMMMMW0olkXNMMMMMMMMMMKc..'oxd
+        k0d,.;0MMMMMMMMMW00NMMMMMMMMMMMWx'..cXXK
+        KNKc..xWMMMMMMMMMMMMMMMMMMMMMMMK:..,OWXX
+        XKNk,.lNMMMMMMMMMMMMMMMMMMMMMMMk,.'o00KW
+        WXOko'cXMMMMMMMMMMMMMMMMMMMMMMWd,.':oOWM
+        MWXxl;cKMMMMMMMMMMMMMMMMMMMMMMKc';lxKWMM
+        MMMWX00NMMMMMMMMMMMMMMMMMMMMMMKxkKWMMMMM");
             Console.ReadKey();
             OpcionesCliente.MostrarMenu();
+        }
+        public static string GetBarraCarga(int completado, int total)
+        {
+            int numBarras = 10;
+            int completadoBarras = (int)Math.Floor((double)completado / total * numBarras);
+            int restantesBarras = numBarras - completadoBarras;
+            return new string('▓', completadoBarras) + new string('-', restantesBarras);
         }
     }
 }

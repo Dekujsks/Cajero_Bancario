@@ -37,11 +37,17 @@ namespace ConsoleApp2
             Console.Write("Ingrese la cantidad a retirar: ");
             double cantidadARetirar = Convert.ToDouble(Console.ReadLine());
             if (cantidadARetirar > saldo)
-            {
                 Console.WriteLine("Saldo insuficiente.");
-            }
             else
             {
+                Console.WriteLine("Retirando. . .");
+                for (int r = 0; r <= 10; r++)
+                {
+                    string barraCarga = GetBarraCarga(r, 10);
+                    Console.Write($"\r[{barraCarga}] {r * 10}%");
+                    Thread.Sleep(450);
+                }
+                Console.WriteLine();
                 saldo -= cantidadARetirar;
                 saldoRetirado += cantidadARetirar;
                 Console.WriteLine($"Retiro exitoso! Saldo restante: S/. {saldo}");
@@ -56,6 +62,14 @@ namespace ConsoleApp2
             decimal cantidadADepositar = Convert.ToDecimal(Console.ReadLine());
             if (cantidadADepositar > 100)
             {
+                Console.WriteLine("Depositando. . .");
+                for (int i = 0; i <= 10; i++)
+                {
+                    string barraCarga = GetBarraCarga(i, 10);
+                    Console.Write($"\r[{barraCarga}] {i * 10}%");
+                    Thread.Sleep(200);
+                }
+                Console.WriteLine();
                 saldo += (double)cantidadADepositar;
                 Console.WriteLine($"{nombre} ha depositado {cantidadADepositar:C} Nuevo saldo: {saldo:C}");
             }
@@ -71,7 +85,7 @@ namespace ConsoleApp2
             Console.Write("Ingrese el nombre del usuario: "); string? nom_trans = Console.ReadLine();
             Console.Write("Ingrese el apellido del usuario: "); string? ap_trans = Console.ReadLine();
             Console.Write("Ingrese el DNI del usuario: "); string? dni_trans = Console.ReadLine();
-            Workbook base_excel = new Workbook("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
+            Workbook base_excel = new Workbook("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
             Worksheet hoja = base_excel.Worksheets[0];
             for (int i = 2; i < 100; i++)
             {
@@ -99,10 +113,19 @@ namespace ConsoleApp2
                                 resp = Convert.ToChar(Console.ReadLine());
                                 if (resp == 's')
                                 {
+
                                     saldo = saldo - trans;
                                     Cell saldo_trans = hoja.Cells[$"F{i}"];
                                     saldo_trans.PutValue(saldo_trans.DoubleValue + trans);
-                                    base_excel.Save("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
+                                    base_excel.Save("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
+                                    Console.WriteLine("Transfiriendo. . .");
+                                    for (int t = 0; t <= 10; t++)
+                                    {
+                                        string barraCarga = GetBarraCarga(t, 10);
+                                        Console.Write($"\r[{barraCarga}] {t * 10}%");
+                                        Thread.Sleep(300);
+                                    }
+                                    Console.WriteLine();
                                     Console.Write("Transferencia satisfactoria!");
                                     Console.ReadKey();
                                     break;
@@ -139,6 +162,14 @@ namespace ConsoleApp2
             montoPrestamo = Convert.ToDouble(Console.ReadLine());
             Console.Write("¿En cuántas cuotas lo desea?: ");
             cuotas = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Realizando prestamo...");
+            for (int p = 0; p <= 10; p++)
+            {
+                string barraCarga = GetBarraCarga(p, 10);
+                Console.Write($"\r[{barraCarga}] {p * 10}%");
+                Thread.Sleep(400);
+            }
+            Console.WriteLine();
             if (saldo < 1000)
                 tasaInteresAnual = 4;
             else
@@ -157,6 +188,9 @@ namespace ConsoleApp2
                     tasaInteresMensual = tasaInteresAnual / 12 / 100;
                 }
             }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nNo olvide ser responsable con sus pagos, gracias :)");
+            Console.ForegroundColor = ConsoleColor.Green;
             if (saldo < 1000)
                 Console.WriteLine("\nDebido a su situacion economica actual se redujo la tasa de interes a un 4%");
             Console.WriteLine("\nTasa de interes: 10%");
@@ -167,7 +201,7 @@ namespace ConsoleApp2
         public static void Salir()
         {
             Console.WriteLine("《 Salida 》");
-            Workbook base_excel = new Workbook("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
+            Workbook base_excel = new Workbook("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
             Worksheet hoja = base_excel.Worksheets[0];
             for (int n = 2; n <= 100; n++)
             {
@@ -179,9 +213,6 @@ namespace ConsoleApp2
                     break;
                 }
             }
-            base_excel.Save("C:\\Users\\LESLIE\\Downloads\\Proyectos y practicas\\Proyectos y practicas\\ConsoleApp2\\Basededatos.xlsx");
-            nombre = ""; apellidos = ""; DNI = 0; saldo = 0; clave = 0;
-            saldoAnterior = 0; saldoRetirado = 0;
             Console.Write("¿Quiere cerrar sesion o quiere cerrar la caja? (s: sesion/c: caja): ");
             char resp;
             if (char.TryParse(Console.ReadLine(), out resp))
@@ -193,15 +224,31 @@ namespace ConsoleApp2
                             Console.Write("Usted nunca se registro ni inicio sesion\n\nRetornando..."); 
                             Console.ReadKey();
                         }
-                        else {}
+                        else {
+                            Console.WriteLine("Guardando cambios...");
+                            for (int s = 0; s <= 10; s++)
+                            {
+                                string barraCarga = GetBarraCarga(s, 10);
+                                Console.Write($"\r[{barraCarga}] {s * 10}%");
+                                Thread.Sleep(50);
+                            }
+                            base_excel.Save("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
+                            Console.WriteLine();
+                            nombre = ""; apellidos = ""; DNI = 0; saldo = 0; clave = 0;
+                            saldoAnterior = 0; saldoRetirado = 0;
+                        }
                         break;
                     case 'c':
                         if (nombre == "" && apellidos == "" && DNI == 0)
                         {
                             Console.WriteLine($"Nos vemos individuo, tenga buen día.");
                         }
-                        else 
+                        else
+                        {
+                            base_excel.Save("C:\\Users\\[NombredeEquipo]\\Desktop\\Cajero_Bancario\\Basededatos.xlsx");
                             Console.WriteLine($"Nos vemos {nombre}, tenga buen día.");
+                        }
+                            
                         Environment.Exit(0);
                         break;
                 }
